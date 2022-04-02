@@ -14,7 +14,7 @@ class FormExpense extends React.Component {
       description: '',
       currency: 'USD',
       method: 'Dinheiro',
-      tag: { ALIMENTAÇÂO },
+      tag: ALIMENTAÇÂO,
     };
   }
 
@@ -41,7 +41,7 @@ class FormExpense extends React.Component {
       description: '',
       currency: 'USD',
       method: 'Dinheiro',
-      tag: { ALIMENTAÇÂO },
+      tag: ALIMENTAÇÂO,
     });
   }
 

@@ -1,9 +1,10 @@
 import React from 'react';
+import BodyTable from './BodyTable';
 
 class TableExpenses extends React.Component {
   render() {
     return (
-      <table>
+      <table border="1" className="table">
         <thead>
           <tr>
             <th>Descrição</th>
@@ -17,6 +18,7 @@ class TableExpenses extends React.Component {
             <th>Editar/Excluir</th>
           </tr>
         </thead>
+        <BodyTable />
       </table>
     );
   }

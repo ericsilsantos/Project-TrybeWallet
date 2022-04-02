@@ -7,6 +7,7 @@ export const LOADING_API = 'LOADING_API';
 export const GET_PRICE = 'GET_PRICE';
 export const SAVE_EXPENCES = 'SAVE_EXPENCES';
 export const DELETE_EXPENCE = 'DELETE_EXPENCE';
+export const EDIT_EXPENCE = 'EDIT_EXPENCE';
 
 export const actionGetEmail = (state) => ({
   type: GET_EMAIL,
@@ -30,6 +31,11 @@ export const actionSeveExpences = (state) => ({
 
 export const actionDeleteExpence = (state) => ({
   type: DELETE_EXPENCE,
+  state,
+});
+
+export const actionEditExpence = (state) => ({
+  type: EDIT_EXPENCE,
   state,
 });
 

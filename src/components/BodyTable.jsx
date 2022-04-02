@@ -24,7 +24,13 @@ class BodyTable extends React.Component {
                 <td>{total}</td>
                 <td>Real</td>
                 <td>
-                  <button type="button">Editar</button>
+                  <button
+                    data-testid="edit-btn"
+                    onClick={ () => console.log('xablau') }
+                    type="button"
+                  >
+                    Editar
+                  </button>
                   <button
                     data-testid="delete-btn"
                     onClick={ () => deleteExpense(id) }

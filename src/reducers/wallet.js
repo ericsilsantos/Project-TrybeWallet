@@ -1,5 +1,10 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
-import { GET_CURRENCY, GET_PRICE, SAVE_EXPENCES, DELETE_EXPENCE } from '../actions';
+import {
+  GET_CURRENCY,
+  GET_PRICE,
+  SAVE_EXPENCES,
+  DELETE_EXPENCE,
+  EDIT_EXPENCE } from '../actions';
 
 const STATE_INICIAL = {
   currencies: [],
@@ -18,6 +23,8 @@ const wallet = (state = STATE_INICIAL, action) => {
   case DELETE_EXPENCE:
     return { ...state,
       expenses: state.expenses.filter((exp) => exp.id !== action.state) };
+  case EDIT_EXPENCE:
+    return { ...state };
   default:
     return state;
   }

@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import Header from '../components/Header';
 import { fetchCurrency } from '../actions';
 import FormExpense from '../components/FormExpense';
+import TableExpenses from '../components/TableExpenses';
 
 class Wallet extends React.Component {
   componentDidMount() {
@@ -16,6 +17,7 @@ class Wallet extends React.Component {
       <div>
         <Header />
         <FormExpense />
+        <TableExpenses />
       </div>
     );
   }

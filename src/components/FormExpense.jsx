@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchPrice, actionSeveExpences } from '../actions/index';
 
+const ALIMENTAÇÂO = 'Alimentação';
+
 class FormExpense extends React.Component {
   constructor() {
     super();
@@ -12,7 +14,7 @@ class FormExpense extends React.Component {
       description: '',
       currency: 'USD',
       method: 'Dinheiro',
-      tag: 'Alimentação',
+      tag: { ALIMENTAÇÂO },
     };
   }
 
@@ -39,7 +41,7 @@ class FormExpense extends React.Component {
       description: '',
       currency: 'USD',
       method: 'Dinheiro',
-      tag: 'Alimentação',
+      tag: { ALIMENTAÇÂO },
     });
   }
 
@@ -103,7 +105,7 @@ class FormExpense extends React.Component {
               data-testid="tag-input"
               id="tag"
             >
-              <option value="Alimentação">Alimentação</option>
+              <option value={ ALIMENTAÇÂO }>Alimentação</option>
               <option value="Lazer">Lazer</option>
               <option value="Trabalho">Trabalho</option>
               <option value="Transporte">Transporte</option>

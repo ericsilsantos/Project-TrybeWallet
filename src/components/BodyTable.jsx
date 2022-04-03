@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { actionDeleteExpence } from '../actions';
+import { actionDeleteExpence, actionEnableEditExpence } from '../actions';
 
 class BodyTable extends React.Component {
   render() {
-    const { expenses, deleteExpense } = this.props;
+    const { expenses, deleteExpense, editExpense } = this.props;
     return (
       <tbody>
         { expenses.length === 0 ? false : (
@@ -26,7 +26,7 @@ class BodyTable extends React.Component {
                 <td>
                   <button
                     data-testid="edit-btn"
-                    onClick={ () => console.log('xablau') }
+                    onClick={ () => editExpense(id) }
                     type="button"
                   >
                     Editar
@@ -50,13 +50,17 @@ class BodyTable extends React.Component {
 
 const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
+  // text: state.wallet.text,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   deleteExpense: (id) => dispatch(actionDeleteExpence(id)),
+  editExpense: (id) => dispatch(actionEnableEditExpence(id)),
 });
 
 BodyTable.propTypes = {
+  // text: PropTypes.func.isRequired,
+  editExpense: PropTypes.func.isRequired,
   deleteExpense: PropTypes.func.isRequired,
   expenses: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,

@@ -4,12 +4,15 @@ import {
   GET_PRICE,
   SAVE_EXPENCES,
   DELETE_EXPENCE,
+  ENABLE_EDIT_EXPENCE,
   EDIT_EXPENCE } from '../actions';
 
 const STATE_INICIAL = {
   currencies: [],
   expenses: [],
   price: {},
+  enableEdit: false,
+  expenseToEdit: [],
 };
 
 const wallet = (state = STATE_INICIAL, action) => {
@@ -23,8 +26,17 @@ const wallet = (state = STATE_INICIAL, action) => {
   case DELETE_EXPENCE:
     return { ...state,
       expenses: state.expenses.filter((exp) => exp.id !== action.state) };
+  case ENABLE_EDIT_EXPENCE:
+    return { ...state,
+      enableEdit: true,
+      expenseToEdit: state.expenses.filter((exp) => exp.id === action.state) };
   case EDIT_EXPENCE:
-    return { ...state };
+    return { ...state,
+      enableEdit: false,
+      expenses: state.expenses.map((exp) => (exp.id === action.state.id ? ({
+        ...exp,
+        ...action.state,
+      }) : (exp))) };
   default:
     return state;
   }

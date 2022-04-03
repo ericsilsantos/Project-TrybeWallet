@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchPrice, actionSeveExpences } from '../actions/index';
+import { fetchPrice, actionSeveExpences, actionEditExpence } from '../actions/index';
 
 const ALIMENTAÇÂO = 'Alimentação';
 
@@ -18,10 +18,25 @@ class FormExpense extends React.Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    const { enableEdit } = this.props;
+    if (enableEdit !== prevProps.enableEdit) this.expenToForm();
+  }
+
+  expenToForm = () => {
+    const { expenseToEdit } = this.props;
+    this.setState({
+      value: expenseToEdit[0].value,
+      description: expenseToEdit[0].description,
+      currency: expenseToEdit[0].currency,
+      method: expenseToEdit[0].method,
+      tag: expenseToEdit[0].tag,
+    });
+  }
+
   handleChange = ({ target }) => {
     const { value, id } = target;
     this.setState({ [id]: value });
-    // console.log(this.state);
   }
 
   getToGetPrice = async () => {
@@ -29,10 +44,9 @@ class FormExpense extends React.Component {
     await getPrice();
   }
 
-  handleButton = async () => {
+  handleButtonAdd = async () => {
     await this.getToGetPrice();
     const { price, saveExchange } = this.props;
-    // console.log(price);
     saveExchange({ ...this.state, exchangeRates: price });
     const { id } = this.state;
     this.setState({
@@ -45,8 +59,20 @@ class FormExpense extends React.Component {
     });
   }
 
+  handleButtonEdit = async () => {
+    const { editExpence, expenseToEdit } = this.props;
+    await editExpence({ ...this.state, id: expenseToEdit[0].id });
+    this.setState({
+      value: '',
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: ALIMENTAÇÂO,
+    });
+  }
+
   render() {
-    const { currencies } = this.props;
+    const { currencies, enableEdit } = this.props;
     const { value, description, currency, method, tag } = this.state;
     return (
       <fieldset>
@@ -112,12 +138,21 @@ class FormExpense extends React.Component {
               <option value="Saúde">Saúde</option>
             </select>
           </label>
-          <button
-            onClick={ this.handleButton }
-            type="button"
-          >
-            Adicionar despesa
-          </button>
+          { enableEdit ? (
+            <button
+              onClick={ this.handleButtonEdit }
+              type="button"
+            >
+              Editar despesa
+            </button>
+          ) : (
+            <button
+              onClick={ this.handleButtonAdd }
+              type="button"
+            >
+              Adicionar despesa
+            </button>
+          ) }
         </form>
       </fieldset>
     );
@@ -127,18 +162,31 @@ class FormExpense extends React.Component {
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
   price: state.wallet.price,
+  enableEdit: state.wallet.enableEdit,
+  expenseToEdit: state.wallet.expenseToEdit,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  editExpence: (payload) => dispatch(actionEditExpence(payload)),
   getPrice: () => dispatch(fetchPrice()),
   saveExchange: (payload) => dispatch(actionSeveExpences(payload)),
 });
 
 FormExpense.propTypes = {
+  editExpence: PropTypes.func.isRequired,
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   getPrice: PropTypes.func.isRequired,
   saveExchange: PropTypes.func.isRequired,
   price: PropTypes.shape({}).isRequired,
+  enableEdit: PropTypes.bool.isRequired,
+  expenseToEdit: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    value: PropTypes.string,
+    description: PropTypes.string,
+    currency: PropTypes.string,
+    method: PropTypes.string,
+    tag: PropTypes.string,
+  })).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormExpense);

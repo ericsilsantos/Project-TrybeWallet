@@ -1,7 +1,7 @@
 body {
   background-color: rgb(91, 93, 95);
   color: white;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: larger;
   font-weight: 800;
 }
@@ -39,8 +39,8 @@ body option {
   display: flex;
   flex-direction: column;
   font-size: large;
-  justify-content: space-around;
   height: 350px;
+  justify-content: space-around;
   left: 35%;
   margin-top: 8%;
   min-width: max-content;

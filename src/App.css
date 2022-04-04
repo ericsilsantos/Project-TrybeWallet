@@ -1,14 +1,164 @@
+body {
+  background-color: rgb(91, 93, 95);
+  color: white;
+  font-family:'Courier New', Courier, monospace;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+body input {
+  border-radius: 8px;
+  font-size:medium;
+  height: 20px;
+}
+
+body select {
+  background-color: white;
+  border-radius: 8px;
+  color: black;
+  font-size: medium;
+}
+body option {
+  background-color: rgb(10, 9, 9);
+  color: white;
+}
+
+.iconWallet {
+  width: 100px;
+}
+
+.iconWalletHeader {
+  margin-left: 30px;
+  width: 80px;
+}
+
+.formLogin {
+  align-items: center;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  font-size: large;
+  justify-content:space-around;
+  height: 350px;
+  left: 35%;
+  margin-top: 8%;
+  min-width: max-content;
+  padding-top: 20px;
+  position: absolute;
+  width: 30%;
+}
+
+.checagem {
+  font-size: 25px;
+  margin-left: 10px;
+  margin-top: -5px;
+  position:fixed;
+}
+
+.buttonAcess {
+  border-radius: 10px;
+  color: rgb(100, 96, 96);
+  height: 30px;
+  width: 30%;
+}
+
+.buttonAcess:disabled {
+  cursor:not-allowed;
+}
+
+.buttonAcess:enabled {
+  background-color: gray;
+  color: white;
+  cursor: pointer;
+}
+
 .header {
+  align-items: center;
   background-color: black;
   color: white;
   display: flex;
   padding: 15px;
 }
 
-.user {
-  width: 60%;
+.infoInHeader {
+  margin-left: 50%;
+}
+
+.fieldsetExpense {
+  background-color: rgba(0, 0, 0, 0.521);
+  border-color: rgba(0, 0, 0, 0.521);
+  margin: 0;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.formExpense {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.formExpense label {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.buttonAdd {
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px;
+  font-size: medium;
+  font-weight: bolder;
+}
+
+.buttonAdd:hover {
+  background-color: rgb(204, 201, 201);
+}
+
+.buttonAdd:active {
+  box-shadow: none;
+  position: relative;
+  top: 5px;
 }
 
 .table {
+  border-collapse: collapse;
+  text-align: center;
   width: 100%;
+}
+
+.table thead {
+  background-color: rgb(102, 104, 105)
+}
+
+.table tr {
+  border-bottom: 1px solid black;
+}
+
+.table th {
+  padding: 10px;
+}
+
+.table td {
+  font-weight: normal;
+  padding: 10px;
+}
+
+.trBody:hover {
+  background-color: rgb(94, 96, 99);
+}
+
+.buttonEdit {
+  background-color: rgb(122, 122, 122);
+  border-radius: 10px;
+  color: white;
+  font-weight: bolder;
+  height: 30px;
+}
+
+.buttonDelete {
+  background-color: black;
+  border-radius: 10px;
+  color: white;
+  font-weight: bolder;
+  height: 30px;
 }

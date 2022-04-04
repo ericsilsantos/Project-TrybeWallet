@@ -75,8 +75,8 @@ class FormExpense extends React.Component {
     const { currencies, enableEdit } = this.props;
     const { value, description, currency, method, tag } = this.state;
     return (
-      <fieldset>
-        <form>
+      <fieldset className="fieldsetExpense">
+        <form className="formExpense">
           <label htmlFor="description">
             Descrição:
             <input
@@ -140,6 +140,7 @@ class FormExpense extends React.Component {
           </label>
           { enableEdit ? (
             <button
+              className="buttonAdd"
               onClick={ this.handleButtonEdit }
               type="button"
             >
@@ -147,6 +148,7 @@ class FormExpense extends React.Component {
             </button>
           ) : (
             <button
+              className="buttonAdd"
               onClick={ this.handleButtonAdd }
               type="button"
             >

@@ -14,7 +14,7 @@ class BodyTable extends React.Component {
             const total = parseFloat(value * exchangeRates[currency].ask).toFixed(2);
             const { name } = exchangeRates[currency];
             return (
-              <tr key={ id }>
+              <tr className="trBody" key={ id }>
                 <td>{description}</td>
                 <td>{tag}</td>
                 <td>{method}</td>
@@ -25,6 +25,7 @@ class BodyTable extends React.Component {
                 <td>Real</td>
                 <td>
                   <button
+                    className="buttonEdit"
                     data-testid="edit-btn"
                     onClick={ () => editExpense(id) }
                     type="button"
@@ -32,6 +33,7 @@ class BodyTable extends React.Component {
                     Editar
                   </button>
                   <button
+                    className="buttonDelete"
                     data-testid="delete-btn"
                     onClick={ () => deleteExpense(id) }
                     type="button"

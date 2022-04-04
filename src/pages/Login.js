@@ -52,28 +52,48 @@ class Login extends React.Component {
     const { emailErrado, senhaErrado } = this.state;
     return (
       <div>
-        <form>
-          <label htmlFor="email">
-            Email:
-            <input
-              id="email"
-              onChange={ this.handleChange }
-              data-testid="email-input"
-              type="text"
-            />
-          </label>
-          { emailErrado ? <span>Email errado</span> : false}
-          <label htmlFor="senha">
-            Senha
-            <input
-              id="senha"
-              onChange={ this.handleChange }
-              data-testid="password-input"
-              type="password"
-            />
-          </label>
-          { senhaErrado ? <span>Senha errada</span> : false}
+        <form className="formLogin">
+          <img
+            className="iconWallet"
+            src="https://www.seekpng.com/png/full/332-3321868_jewelry-for-charismatic-appearance-wallets-organised-black-and.png"
+            alt="carteira"
+          />
+          <div>
+            <label htmlFor="email">
+              Email:
+              <br />
+              <input
+                id="email"
+                onChange={ this.handleChange }
+                data-testid="email-input"
+                type="text"
+              />
+            </label>
+            { emailErrado ? (
+              <span className="checagem" title="Email Inválido">x</span>
+            ) : (
+              <span className="checagem" title="Email Aceito">&#10003;</span>
+            )}
+          </div>
+          <div>
+            <label htmlFor="senha">
+              Senha:
+              <br />
+              <input
+                id="senha"
+                onChange={ this.handleChange }
+                data-testid="password-input"
+                type="password"
+              />
+            </label>
+            { senhaErrado ? (
+              <span className="checagem" title="Senha Inválida">x</span>
+            ) : (
+              <span className="checagem" title="Senha Aceita">&#10003;</span>
+            )}
+          </div>
           <button
+            className="buttonAcess"
             onClick={ this.handleButton }
             disabled={ emailErrado || senhaErrado }
             type="button"

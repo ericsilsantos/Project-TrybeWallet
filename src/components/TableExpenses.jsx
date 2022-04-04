@@ -4,7 +4,7 @@ import BodyTable from './BodyTable';
 class TableExpenses extends React.Component {
   render() {
     return (
-      <table border="1" className="table">
+      <table className="table">
         <thead>
           <tr>
             <th>Descrição</th>

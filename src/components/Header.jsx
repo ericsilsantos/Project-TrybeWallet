@@ -16,25 +16,33 @@ class Header extends React.Component {
     }
     return (
       <header className="header">
-        <p
-          className="user"
-          data-testid="email-field"
-        >
-          {`Userário: ${userEmail}`}
-        </p>
-        <p>
-          Despesa Tolal:
-          <span
-            data-testid="total-field"
+        <img
+          className="iconWalletHeader"
+          src="https://www.seekpng.com/png/full/332-3321868_jewelry-for-charismatic-appearance-wallets-organised-black-and.png"
+          alt="carteira"
+        />
+        <div className="infoInHeader">
+          <p
+            className="user"
+            data-testid="email-field"
           >
-            {parseFloat(total.toFixed(2))}
-          </span>
-        </p>
-        <p
-          data-testid="header-currency-field"
-        >
-          BRL
-        </p>
+            {`Userário: ${userEmail}`}
+          </p>
+          <p>
+            Despesa Tolal:
+            {' '}
+            <span
+              data-testid="total-field"
+            >
+              {parseFloat(total.toFixed(2))}
+            </span>
+            <span
+              data-testid="header-currency-field"
+            >
+              BRL
+            </span>
+          </p>
+        </div>
       </header>
     );
   }
